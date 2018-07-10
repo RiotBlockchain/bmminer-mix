@@ -222,7 +222,7 @@ extern unsigned int PHY_MEM_NONCE2_JOBID_ADDRESS;
 #include "miner_type.h"     // use setminertype to define miner type in this file instead of belows!!!
 //#define R4        // if defined , for R4  63 chips
 //#define S9_PLUS   // if defined , for T9  57 chips
-//#define S9_63 // if defined , for S9  63 chips
+#define S9_63 // if defined , for S9  63 chips
 //#define T9_18     // if defined , for T9+  18 chips
 
 #define RESET_KEEP_TIME     3   // keep reset signal for 1 secnods
@@ -314,7 +314,7 @@ extern unsigned int PHY_MEM_NONCE2_JOBID_ADDRESS;
 #else
 #undef ENABLE_SET_TICKETMASK_BEFORE_TESTPATTEN      // a bug, do not know reason: asic ticket mask > 0 even after reset asic!!!
 #endif
-
+#undef T9_18
 #define ASIC_TYPE           1387    // 1385 or  1387
 #define CHIP_ADDR_INTERVAL  4   // fix chip address interval = 4 
 #define DEFAULT_BAUD_VALUE  26
@@ -344,7 +344,7 @@ extern unsigned int PHY_MEM_NONCE2_JOBID_ADDRESS;
 #undef DEBUG_PRINT_T9_PLUS_PIC_HEART_INFO   // if defined, used to debug T9+ bug: pic heart cmd failed!
 #undef DEBUG_PIC_UPGRADE        // if defined, we will force to write PIC program data once!
 #undef DEBUG_KEEP_REBOOT_EVERY_ONE_HOUR     // if defined, keep reboot every one hour!!!  this is for R4 
-#undef DEBUG_NOT_CHECK_FAN_NUM      // if defined, we will ignore fan number checking, will keep run even without any fan!!!
+#define DEBUG_NOT_CHECK_FAN_NUM         1   // if defined, we will ignore fan number checking, will keep run even without any fan!!!
 #undef DEBUG_WITHOUT_FREQ_VOLTAGE_LIMIT // if defined, we will not limit freq according to voltage!
 
 #undef DEBUG_DOWN_VOLTAGE_TEST
@@ -363,10 +363,10 @@ extern unsigned int PHY_MEM_NONCE2_JOBID_ADDRESS;
 #undef DEBUG_REBOOT // reboot every 30mins, for test
 #undef DEBUG_218_FAN_FULLSPEED  //for debug on 218, full speed on fan
 #undef DISABLE_TEMP_PROTECT
-#undef TWO_CHIP_TEMP_S9
-#undef SHOW_BOTTOM_TEMP
+#define TWO_CHIP_TEMP_S9 1
+#define SHOW_BOTTOM_TEMP 1
 #undef KEEP_TEMPFAN_LOG // if defined, will not clear old temp fan log info
-#undef HIGH_TEMP_TEST_S9    //if defined, will use 120 degree as the high temp
+#undef HIGH_TEMP_TEST_S9   //if defined, will use 120 degree as the high temp
 #undef CAPTURE_PATTEN
 
 #define CHECK_RT_IDEAL_RATE_PERCENT     85  // RT rate / ideal rate >= 85% will be OK, or need re init

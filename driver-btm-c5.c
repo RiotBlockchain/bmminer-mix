@@ -209,7 +209,7 @@ uint8_t de_voltage = 176;
 int FatalErrorValue=0;
 
 bool opt_bitmain_new_cmd_type_vil = false;
-bool opt_fixed_freq = false;
+bool opt_fixed_freq = true; // KARL: enables miners to check /config/bmminer.conf and clock itself to freq defined in file
 bool opt_pre_heat = true;
 
 bool status_error = false;
@@ -651,19 +651,19 @@ int getFixedFreqVoltageValue(int freq)
         vol_value=970;
 #endif
 
-#ifdef S9_63
+#ifdef S9_63 // KARL: MODIFIED TO RUN AT 8.4V AT ALL CLOCK SPEEDS. UNSTABLE ABOVE 625-650 MHz. RECOMPILE AT HIGHER VOLTAGE FOR OVERCLOCK
     if(freq>=675)   // hashrate 14500
-        vol_value=870;
+        vol_value=840;
     else if(freq>=650)  // hashrate 14000
-        vol_value=880;
+        vol_value=840;
     else if(freq>=631)  // hashrate 13500
-        vol_value=900;
+        vol_value=840;
     else if(freq>=606)  // hashrate 13000
-        vol_value=910;
+        vol_value=840;
     else if(freq>=581)  // hashrate 12500
-        vol_value=930;
+        vol_value=840;
     else
-        vol_value=940;
+        vol_value=840;
 #endif
 
 #ifdef T9_18
